@@ -2,7 +2,9 @@
 ## what is this
 
 + bundle map file(arcgis bundle/bundlx)
-+ static file with cors
++ static file with cors http header
+支持跨域
+
 ## Run
 
 ```
