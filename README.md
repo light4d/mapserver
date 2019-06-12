@@ -11,7 +11,7 @@
 docker rm -f mapserver
 docker rmi `docker images |grep mapserver|awk '{ print $3}'`
 docker pull light4d/mapserver
-docker run --name=mapserver -d  --restart=always -p 8030:8030  -v /data/mymap:/root/file  light4d/mapserver ./mapserver httpfile --root=/root/file
+docker run --name=mapserver -d  --restart=always -p 8030:8030  -v /data/mymap:/root/file  light4d/mapserver ./mapserver httpfile --root=/root/file --bundle=/root/bundle/_alllayers
 ```
 mymap tree
 ```
