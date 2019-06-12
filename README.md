@@ -6,13 +6,27 @@
 支持跨域
 
 ## Run
-
++ 2d map
 ```
 docker rm -f mapserver
 docker rmi `docker images |grep mapserver|awk '{ print $3}'`
 docker pull light4d/mapserver
-docker run --name=mapserver -d  --restart=always -p 8030:8030  -v /data/mymap:/root/file  light4d/mapserver ./mapserver httpfile --root=/root/file --bundle=/root/bundle/_alllayers
+docker run --name=mapserver -d  --restart=always -p 8030:8030  -v /data/mymap:/root/file  light4d/mapserver ./mapserver httpfile --root=/root/file
 ```
++ bundle
+```
+docker rm -f mapserver
+docker rmi `docker images |grep mapserver|awk '{ print $3}'`
+docker pull light4d/mapserver
+docker run --name=mapserver -d  --restart=always -p 8030:8030  -v /data/mybundle:/root/bundle/_alllayers  light4d/mapserver ./mapserver httpfile  --bundle=/root/bundle/_alllayers
+```
+
+## usage 
++ 2d map
+
+ http://{host}:8030/httpfile/{z}/{x}_{y}.png
+
+
 mymap tree
 ```
 .
@@ -61,7 +75,12 @@ mymap tree
 │   │   └── 76928.png
 ```
 
-bundle 文件夹格式
+
+ http://{host}:8030/bundle/?x={z}&x={x}&y={y}
+ 
+
+
+mybundle tree
 ```
 .
 ├── L10
